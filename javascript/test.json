@@ -1,0 +1,6 @@
+[
+    { "name":"John", "age":30, "roll":1},
+    { "name":"sarah", "age":25, "roll":2},
+    { "name":"marie", "age":27, "roll":3},
+    { "name":"max", "age":28, "roll":4}
+]

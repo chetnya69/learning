@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+
+    <p id="demo"></p>
+
+    <button id="mybutton1" onclick="myfunction()">click me</button>
+    <p id="demo1">Following are the student details:</p>
+
+</body>    
+<script>
+    function myfunction() {
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open('GET',"test.json", true);
+    httpRequest.onreadystatechange = function() {
+        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                var data = JSON.parse(httpRequest.responseText);
+                var student_data = "<table style='border: 1px solid; border-collapse: collapse; width: 50%'>";
+                student_data+= '<tr style="border: 1px solid; border-collapse: collapse; text-align:left">' +
+                            '<th>' + "Name" + '</th>' +
+                            '<th>' + "Age" + '</th>' +
+                            '<th>' + "Roll Number" + '</th>' +
+                        '</tr>'
+                // student_data += "Following are the student details: "
+                
+                for(var i in data){
+                    // var name = data[i].name;
+                    // var change_color_name = name.fontcolor("red").bold();
+                    student_data += '<tr style="border: 1px solid; border-collapse: collapse; text-align:left">' + 
+                                        '<td>' + data[i].name + '</td>' +
+                                        '<td>' + data[i].age + '</td>' +
+                                        '<td>' + data[i].roll + '</td>'+
+                                    '</tr>' ;
+                    
+                    // console.log(student_data);
+                
+                // console.log(change_color_name);
+                    // document.getElementById("demo1").innerHTML += student_data
+                    // alert("hello");
+                }
+                student_data += "</table>";
+                console.log(student_data);
+                document.getElementById("demo1").innerHTML += student_data;
+        }   
+    };
+    httpRequest.send(); 
+}
+</script>
+<!-- <script src="javascript_implementation.js"></script> -->
+</html>
